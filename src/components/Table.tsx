@@ -1,6 +1,6 @@
 import React from 'react';
 import TableHeader from './TableHeader';
-import TableCell from './TableCell';
+import TableBody from './TableBody';
 import type { TableRow } from '../types';
 
 type TableProps = {
@@ -20,74 +20,25 @@ const Table = ({
 	columns,
 	onSort,
 	onRowSelect,
-	isSelectable,
-	isMultiSelect
+	isSelectable = false,
+	isMultiSelect = false
 }: TableProps) => {
-	const idIndex = columns.map((column) => column.key).indexOf('id');
-
-	const handleRowSelect = (row: TableRow) => {
-		if (onRowSelect) {
-			onRowSelect(row);
-		}
-	};
+	// const idIndex = columns.map((column) => column.key).indexOf('id');
 
 	return (
-		<table style={styles.tableStyle}>
-			<TableHeader columns={columns} onSort={onSort} />
-			<tbody style={styles.bodyStyle}>
-				{data.map((row, index) => (
-					<tr style={ styles.rowStyle }  key={index} onClick={() => handleRowSelect(row)}>
-						{columns.map((column, columnIndex) => (
-							<TableCell
-								key={column.key}
-								column={column.key}
-								value={row[column.key]}
-								isSelectable={isSelectable}
-								isMultiSelect={
-									isMultiSelect && columnIndex === idIndex - 1
-								}
-							/>
-						))}
-					</tr>
-				))}
-			</tbody>
-		</table>
-	);
+			<table style={styles.tableStyle as React.CSSProperties}>
+				<TableHeader columns={columns} onSort={onSort} />
+				<TableBody data={ data } isSelectable={ isSelectable } isMultiSelect={isMultiSelect} />
+			</table>
+  );
 };
-
 const styles = {
 	tableStyle: {
+		boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+		borderCollapse: 'collapse',
+		borderStyle: 'hidden',
 		borderRadius: 16,
-		boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-		border: 'none',
-		// border: 0,
-		// paddingTop: 8,
-		// paddingBottom: 8,
-		// paddingLeft: 16,
-		// paddingRight: 16,
-		backgroundColor: '#f0f0f0',
-		// outline: 0
-		// paddingHorizontal: 16,
-		// paddingVertical: 8
-	},
-	bodyStyle: {
-		backgroundColor: '#FFFFFF',
-		border: 'none'
-	},
-	rowStyle: {
-		border: 'none'
-		// paddingHorizontal: 16,
-		// paddingVertical: 8
-		// backgroundColor: '#F0F0F0'
-		// backgroundColor: '#FFFFFF',
-		// borderTop: '1px solid #E1E1E1',
-    // border: '1px solid #FFFFFF',
-    // padding: 24,
-    // fontWeight: 400,
-    // lineHeight: 1.75,
-    // letterSpacing: '0.1em',
-    // fontSize: 20,
-		// borderColor: '#FFFFFF'
+		// borderSpacing: 0,
 	}
 }
 

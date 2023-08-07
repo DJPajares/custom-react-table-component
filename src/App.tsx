@@ -2,31 +2,36 @@ import React, {useState} from 'react';
 import Table from './components/Table';
 import type { TableRow } from './types';
 
+const data: TableRow[] = [
+  { id: 1, name: 'John Doe', age: 30, city: 'New York' },
+  { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
+  { id: 3, name: 'Mario Kart', age: 99, city: 'Marioland' }
+];
+
+const columns = [
+  {
+    key: 'checkbox',
+    value: ''
+  },
+  {
+    key: 'id',
+    value: 'ID'
+  },
+  {
+    key: 'name',
+    value: 'Name'
+  },
+  {
+    key: 'age',
+    value: 'Age'
+  },
+  {
+    key: 'city',
+    value: 'City'
+  }
+];
+
 const App: React.FC = () => {
-  const data: TableRow[] = [
-    { id: 1, name: 'John Doe', age: 30, city: 'New York' },
-    { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' }
-  ];
-
-  const columns = [
-    {
-      key: 'id',
-      value: 'ID'
-    },
-    {
-      key: 'name',
-      value: 'Name'
-    },
-    {
-      key: 'age',
-      value: 'Age'
-    },
-    {
-      key: 'city',
-      value: 'City'
-    }
-  ];
-
   const [ sortedData, setSortedData ] = useState(data);
   const [ selectedRow, setSelectedRow ] = useState(null);
 
@@ -48,11 +53,13 @@ const App: React.FC = () => {
   };
 
   const handleRowSelect = (row: TableRow) => {
+    console.log('App.tsx - handleRowSelect', row)
     // setSelectedRow(row)
+    // console.log('asd', sortedData[row])
   };
 
   return (
-    <div>
+    <div style={styles.homeStyle as React.CSSProperties}>
       <h1>Table Demo</h1>
       <Table
         data={sortedData}
@@ -65,5 +72,13 @@ const App: React.FC = () => {
     </div>
   );
 };
+
+const styles = {
+  homeStyle: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  }
+}
 
 export default App;

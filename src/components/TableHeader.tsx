@@ -15,7 +15,6 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
   const handleSort = (column: string) => {
     if (onSort) {
       if (sortColumn === column) {
-        // Toggle sort order if sorting the same column
         setAscending((prevState) => !prevState);
       } else {
         setSortColumn(column);
@@ -33,12 +32,11 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
   };
 
   return (
-    <thead style={styles.headerStyle}>
-      {/* <tr style={styles.headerStyle}> */}
+    <thead>
       <tr>
         {columns.map((column) => (
-          <th key={column.key} style={styles.thStyle} onClick={() => handleSort(column.key)}>
-            {column.value} {getSortIcon(column.key)}
+          <th style={styles.headerStyle as React.CSSProperties} key={column.key} onClick={() => handleSort(column.key)}>
+          	{column.value} {getSortIcon(column.key)}
           </th>
         ))}
       </tr>
@@ -48,25 +46,13 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
 
 const styles = {
   headerStyle: {
-    // borderRadius: 16,
-    // backgroundColor: '#f0f0f0',
-    // border: 'none'
-    // border: '1px solid #000000',
-  },
-  thStyle: {
-    // border: '0px solid #000000',
+    backgroundColor: '#f0f0f0',
+    textAlign: 'left',
     cursor: 'pointer',
-    outline: 0,
-		border: 'none',
-    // padding: 24,
-		paddingTop: 8,
-    paddingBottom: 8,
-    // textAlign: 'left',
-    align: 'left',
-    margin: 0,
-    fontWeight: 800,
-    lineHeight: 1.75,
+    padding: '8px 16px',
     fontSize: 20,
+    fontWeight: 600,
+    lineHeight: 1.75,
     letterSpacing: 0,
   }
 };
