@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-interface TableHeaderProps {
+type TableHeaderProps = {
   columns: {
     key: string,
     value: string
@@ -8,25 +8,9 @@ interface TableHeaderProps {
   onSort?: (column: string, ascending: boolean) => void;
 }
 
-const TableHeader: React.FC<TableHeaderProps> = ({ columns, onSort }) => {
+const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
   const [sortColumn, setSortColumn] = useState<string | null>(null);
   const [ascending, setAscending] = useState<boolean>(true);
-
-  const headerStyle: React.CSSProperties = {
-    backgroundColor: '#f0f0f0', // Grey background
-    borderRadius: '16px', // Rounded corners
-    padding: '24px', // Padding
-    fontWeight: 800, // Avenir Heavy
-    lineHeight: '1.75', // Line height
-    letterSpacing: '0', // Letter spacing
-    fontSize: '20px', // Font size for XL & LG
-    fontFamily: 'Avenir Heavy, sans-serif' // Set the font-family to "Avenir Heavy"
-  };
-
-  const thStyle: React.CSSProperties = {
-    borderBottom: 'none', // Remove the bottom border from header cells
-    cursor: 'pointer' // Show pointer cursor when sortable
-  };
 
   const handleSort = (column: string) => {
     if (onSort) {
@@ -49,16 +33,42 @@ const TableHeader: React.FC<TableHeaderProps> = ({ columns, onSort }) => {
   };
 
   return (
-    <thead>
-      <tr style={headerStyle}>
+    <thead style={styles.headerStyle}>
+      {/* <tr style={styles.headerStyle}> */}
+      <tr>
         {columns.map((column) => (
-          <th key={column.key} style={thStyle} onClick={() => handleSort(column.key)}>
+          <th key={column.key} style={styles.thStyle} onClick={() => handleSort(column.key)}>
             {column.value} {getSortIcon(column.key)}
           </th>
         ))}
       </tr>
     </thead>
   );
+};
+
+const styles = {
+  headerStyle: {
+    // borderRadius: 16,
+    // backgroundColor: '#f0f0f0',
+    // border: 'none'
+    // border: '1px solid #000000',
+  },
+  thStyle: {
+    // border: '0px solid #000000',
+    cursor: 'pointer',
+    outline: 0,
+		border: 'none',
+    // padding: 24,
+		paddingTop: 8,
+    paddingBottom: 8,
+    // textAlign: 'left',
+    align: 'left',
+    margin: 0,
+    fontWeight: 800,
+    lineHeight: 1.75,
+    fontSize: 20,
+    letterSpacing: 0,
+  }
 };
 
 export default TableHeader;
