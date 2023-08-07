@@ -10,7 +10,24 @@ const App: React.FC = () => {
     // Add more data rows as needed
   ];
 
-  const columns = ['id', 'name', 'age', 'city'];
+  const columns = [
+    {
+      key: 'id',
+      value: 'ID'
+    },
+    {
+      key: 'name',
+      value: 'Name'
+    },
+    {
+      key: 'age',
+      value: 'Age'
+    },
+    {
+      key: 'city',
+      value: 'City'
+    }
+  ];
 
   const handleSort = (column: string) => {
     // Handle sorting logic here

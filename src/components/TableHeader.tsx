@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
 interface TableHeaderProps {
-  columns: string[];
+  columns: {
+    key: string,
+    value: string
+  }[];
   onSort?: (column: string, ascending: boolean) => void;
 }
 
@@ -49,8 +52,8 @@ const TableHeader: React.FC<TableHeaderProps> = ({ columns, onSort }) => {
     <thead>
       <tr style={headerStyle}>
         {columns.map((column) => (
-          <th key={column} style={thStyle} onClick={() => handleSort(column)}>
-            {column} {getSortIcon(column)}
+          <th key={column.key} style={thStyle} onClick={() => handleSort(column.key)}>
+            {column.value} {getSortIcon(column.key)}
           </th>
         ))}
       </tr>
