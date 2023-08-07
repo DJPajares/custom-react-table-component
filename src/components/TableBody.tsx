@@ -1,64 +1,87 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { TableRow } from '../types';
 
 type TableBodyProps = {
-	data: TableRow[];
+  row: TableRow;
+  index: number;
   isSelectable?: boolean;
   isMultiSelect?: boolean;
   isSelected?: boolean;
-  onRowSelect?: () => void;
-}
+  onRowSelect?: (rowIndex: number) => void;
+  selectedRows: number[];
+  handleRowSelect: (rowIndex: number) => void;
+};
 
 const TableBody = ({
-  data,
+  row,
+  index,
   isSelectable = false,
   isMultiSelect = false,
   isSelected = false,
-  onRowSelect
+  onRowSelect,
+  selectedRows,
+  handleRowSelect
 }: TableBodyProps) => {
-  const [selectedRows, setSelectedRows] = useState([])
-  const handleRowSelect = (rowIndex: number) => {
-    // console.log('rowIndex: ', rowIndex)
-    // console.log('data: ', data[ rowIndex ])
-    
-    setSelectedRows((prevSelectedRows: any) => {
-      if (prevSelectedRows.includes(rowIndex)) {
-        return prevSelectedRows.filter((row: any) => row !== rowIndex);
-      }
+  // const [selectedRows, setSelectedRows] = useState([]);
 
-      return [...prevSelectedRows, rowIndex];
-    });
+  // useEffect(() => {
+  //   console.log('selectedRows: ', selectedRows);
+  // }, [selectedRows]);
+
+  // const handleRowSelect = (rowIndex: number) => {
+  //   // console.log('rowIndex: ', rowIndex)
+  //   // console.log('data: ', data[ rowIndex ])
+
+  //   setSelectedRows((prevSelectedRows: any) => {
+  //     if (prevSelectedRows.includes(rowIndex)) {
+  //       return prevSelectedRows.filter((row: any) => row !== rowIndex);
+  //     }
+
+  //     return [...prevSelectedRows, rowIndex];
+  //   });
+  // };
+
+  const handleCheckboxChange = () => {
+    handleRowSelect(index);
+    if (onRowSelect) {
+      onRowSelect(index);
+    }
   };
 
   return (
-    <tbody>
-      {data.map((row, index) => (
-        <tr key={index}>
-          <td style={ styles.bodyStyle({isSelected}) }>
-            {isSelectable && (isMultiSelect || onRowSelect) && (
-              <div>
-                {isMultiSelect ? (
-                  <input type="checkbox" onChange={() => handleRowSelect(index)} />
-                ) : (
-                  <input
-                    type="radio"
-                    name="selectRow"
-                    // checked={ isSelected }
-                    onChange={ () => handleRowSelect(index) }
-                  />
-                )}
-              </div>
+    <tr key={index}>
+      <td style={styles.bodyStyle({ isSelected })}>
+        {isSelectable && (isMultiSelect || onRowSelect) && (
+          <div>
+            {isMultiSelect ? (
+              // <input type="checkbox" onChange={() => handleRowSelect(index)} />
+              <input
+                type="checkbox"
+                checked={selectedRows.includes(index)}
+                onClick={() => handleRowSelect(index)}
+              />
+            ) : (
+              <input
+                type="radio"
+                name="selectRow"
+                onClick={() => handleRowSelect(index)}
+                checked={isSelected}
+              />
             )}
-          </td>
-  
-          {Object.values(row).map((value, idx) => (
-            <td key={ idx } style={ styles.bodyStyle({ isSelected: false }) as React.CSSProperties} onClick={() => handleRowSelect(index)} >
-              {value}
-            </td>
-          ))}
-        </tr>
+          </div>
+        )}
+      </td>
+
+      {Object.values(row).map((value, idx) => (
+        <td
+          key={idx}
+          style={styles.bodyStyle({ isSelected }) as React.CSSProperties}
+          onClick={() => handleRowSelect(index)}
+        >
+          {value}
+        </td>
       ))}
-    </tbody>
+    </tr>
   );
 };
 
@@ -72,15 +95,8 @@ const styles = {
     lineHeight: 1.75,
     letterSpacing: '0.1em',
     backgroundColor: isSelected ? '#EFEDFD' : 'transparent',
-    cursor: 'pointer',
-  }),
-  contentStyle: {
-    // display: 'flex',
-    // alignItems: 'center'
-  },
-  checkboxStyle: {
-    marginRight: '8px'
-  }
-}
+    cursor: 'pointer'
+  })
+};
 
 export default TableBody;

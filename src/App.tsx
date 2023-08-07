@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Table from './components/Table';
 import type { TableRow } from './types';
 
@@ -32,13 +32,13 @@ const columns = [
 ];
 
 const App: React.FC = () => {
-  const [ sortedData, setSortedData ] = useState(data);
-  const [ selectedRow, setSelectedRow ] = useState(null);
+  const [sortedData, setSortedData] = useState(data);
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const handleSort = (column: string, ascending?: boolean) => {
-    const sorted = [ ...data ].sort((a, b) => {
-      const aValue = a[ column ] ?? '';
-      const bValue = b[ column ] ?? '';
+    const sorted = [...data].sort((a, b) => {
+      const aValue = a[column] ?? '';
+      const bValue = b[column] ?? '';
 
       if (aValue === bValue) return 0;
 
@@ -49,11 +49,11 @@ const App: React.FC = () => {
       }
     });
 
-    setSortedData(sorted)
+    setSortedData(sorted);
   };
 
   const handleRowSelect = (row: TableRow) => {
-    console.log('App.tsx - handleRowSelect', row)
+    console.log('App.tsx - handleRowSelect', row);
     // setSelectedRow(row)
     // console.log('asd', sortedData[row])
   };
@@ -79,6 +79,6 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center'
   }
-}
+};
 
 export default App;

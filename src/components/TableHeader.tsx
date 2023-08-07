@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 type TableHeaderProps = {
   columns: {
-    key: string,
-    value: string
+    key: string;
+    value: string;
   }[];
   onSort?: (column: string, ascending: boolean) => void;
-}
+};
 
 const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
   const [sortColumn, setSortColumn] = useState<string | null>(null);
@@ -35,8 +35,12 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
     <thead>
       <tr>
         {columns.map((column) => (
-          <th style={styles.headerStyle as React.CSSProperties} key={column.key} onClick={() => handleSort(column.key)}>
-          	{column.value} {getSortIcon(column.key)}
+          <th
+            style={styles.headerStyle as React.CSSProperties}
+            key={column.key}
+            onClick={() => handleSort(column.key)}
+          >
+            {column.value} {getSortIcon(column.key)}
           </th>
         ))}
       </tr>
@@ -53,7 +57,7 @@ const styles = {
     fontSize: 20,
     fontWeight: 600,
     lineHeight: 1.75,
-    letterSpacing: 0,
+    letterSpacing: 0
   }
 };
 
