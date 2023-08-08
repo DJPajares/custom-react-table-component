@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, CSSProperties } from 'react';
 import Table from './components/Table';
 import type { TableRow } from './types';
 
@@ -31,7 +31,7 @@ const columns = [
   }
 ];
 
-const App: React.FC = () => {
+const App = () => {
   const [sortedData, setSortedData] = useState(data);
   const [selectedRow, setSelectedRow] = useState(null);
 
@@ -59,7 +59,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div style={styles.homeStyle as React.CSSProperties}>
+    <div style={styles.homeStyle as CSSProperties}>
       <h1>Table Demo</h1>
       <Table
         data={sortedData}

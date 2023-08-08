@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, CSSProperties } from 'react';
 import { TableRow } from '../types';
 
 type TableBodyProps = {
@@ -75,7 +75,7 @@ const TableBody = ({
       {Object.values(row).map((value, idx) => (
         <td
           key={idx}
-          style={styles.bodyStyle({ isSelected }) as React.CSSProperties}
+          style={styles.bodyStyle({ isSelected }) as CSSProperties}
           onClick={() => handleRowSelect(index)}
         >
           {value}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, CSSProperties } from 'react';
 
 type TableHeaderProps = {
   columns: {
@@ -36,7 +36,7 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
       <tr>
         {columns.map((column) => (
           <th
-            style={styles.headerStyle as React.CSSProperties}
+            style={styles.headerStyle as CSSProperties}
             key={column.key}
             onClick={() => handleSort(column.key)}
           >
