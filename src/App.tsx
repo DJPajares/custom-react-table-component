@@ -39,7 +39,7 @@ const App = () => {
         data={data}
         columns={columns}
         isSelectable
-        isMultiSelect
+        // isMultiSelect
       />
     </div>
   );

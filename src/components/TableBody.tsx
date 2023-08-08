@@ -21,7 +21,7 @@ const TableBody = ({
   return (
     <tr key={index}>
       <td style={styles.bodyStyle({ isSelected })}>
-        {(isSelectable && isMultiSelect) && (
+        {(isSelectable) && (
           <div>
             {isMultiSelect ? (
               <input
