@@ -13,6 +13,7 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
   const [ascending, setAscending] = useState<boolean>(true);
 
   const handleSort = (column: string) => {
+    console.log('ascending', ascending)
     if (onSort) {
       if (sortColumn === column) {
         setAscending((prevState) => !prevState);

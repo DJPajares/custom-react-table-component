@@ -1,4 +1,4 @@
-import React, { useState, CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 import Table from './components/Table';
 import type { TableRow } from './types';
 
@@ -32,40 +32,12 @@ const columns = [
 ];
 
 const App = () => {
-  const [sortedData, setSortedData] = useState(data);
-  const [selectedRow, setSelectedRow] = useState(null);
-
-  const handleSort = (column: string, ascending?: boolean) => {
-    const sorted = [...data].sort((a, b) => {
-      const aValue = a[column] ?? '';
-      const bValue = b[column] ?? '';
-
-      if (aValue === bValue) return 0;
-
-      if (ascending) {
-        return aValue > bValue ? -1 : 1;
-      } else {
-        return aValue < bValue ? -1 : 1;
-      }
-    });
-
-    setSortedData(sorted);
-  };
-
-  const handleRowSelect = (row: TableRow) => {
-    console.log('App.tsx - handleRowSelect', row);
-    // setSelectedRow(row)
-    // console.log('asd', sortedData[row])
-  };
-
   return (
     <div style={styles.homeStyle as CSSProperties}>
       <h1>Table Demo</h1>
       <Table
-        data={sortedData}
+        data={data}
         columns={columns}
-        onSort={handleSort}
-        onRowSelect={handleRowSelect}
         isSelectable
         isMultiSelect
       />
