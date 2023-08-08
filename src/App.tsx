@@ -1,6 +1,8 @@
 import React, { CSSProperties } from 'react';
 import Table from './components/Table';
 import type { TableRow } from './types';
+import './fonts/Avenir-Book.ttf';
+import './fonts/Avenir-Heavy.ttf';
 
 const data: TableRow[] = [
   { id: 1, name: 'John Doe', age: 30, city: 'New York' },
@@ -39,7 +41,7 @@ const App = () => {
         data={data}
         columns={columns}
         isSelectable
-        // isMultiSelect
+        isMultiSelect
       />
     </div>
   );

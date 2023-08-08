@@ -57,6 +57,7 @@ const styles = {
   bodyStyle: ({ isSelected }: { isSelected: boolean }) => ({
     borderTop: '1px solid #E1E1E1',
     padding: '8px 16px',
+    fontFamily: 'Avenir-Book',
     fontSize: 20,
     fontWeight: 400,
     lineHeight: 1.75,

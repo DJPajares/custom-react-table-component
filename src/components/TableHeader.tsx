@@ -54,6 +54,7 @@ const styles = {
     textAlign: 'left',
     cursor: 'pointer',
     padding: '8px 16px',
+    fontFamily: 'Avenir-Heavy',
     fontSize: 20,
     fontWeight: 600,
     lineHeight: 1.75,

@@ -1,8 +1,19 @@
-.App {
-  text-align: center;
-  font-family: 'Avenir Heavy', sans-serif;
+@font-face {
+  font-family: "Avenir-Book";
+  src: local("Avenir-Book"),
+    url("./fonts/Avenir-Book.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Avenir-Heavy";
+  src: local("Avenir-Heavy"),
+    url("./fonts/Avenir-Heavy.ttf") format("truetype");
 }
 
+.App {
+  text-align: center;
+}
+
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,4 +47,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
