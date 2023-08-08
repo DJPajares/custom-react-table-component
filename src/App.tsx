@@ -11,23 +11,23 @@ const data: TableRow[] = [
 const columns = [
   {
     key: 'checkbox',
-    value: ''
+    label: ''
   },
   {
     key: 'id',
-    value: 'ID'
+    label: 'ID'
   },
   {
     key: 'name',
-    value: 'Name'
+    label: 'Name'
   },
   {
     key: 'age',
-    value: 'Age'
+    label: 'Age'
   },
   {
     key: 'city',
-    value: 'City'
+    label: 'City'
   }
 ];
 

@@ -3,7 +3,7 @@ import React, { useState, CSSProperties } from 'react';
 type TableHeaderProps = {
   columns: {
     key: string;
-    value: string;
+    label: string;
   }[];
   onSort?: (column: string, ascending: boolean) => void;
 };
@@ -13,7 +13,6 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
   const [ascending, setAscending] = useState<boolean>(true);
 
   const handleSort = (column: string) => {
-    console.log('ascending', ascending)
     if (onSort) {
       if (sortColumn === column) {
         setAscending((prevState) => !prevState);
@@ -41,7 +40,7 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
             key={column.key}
             onClick={() => handleSort(column.key)}
           >
-            {column.value} {getSortIcon(column.key)}
+            {column.label} {getSortIcon(column.key)}
           </th>
         ))}
       </tr>
