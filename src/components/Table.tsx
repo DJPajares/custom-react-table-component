@@ -1,18 +1,8 @@
 import React, { useState, CSSProperties } from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
-import type { TableRow } from '../types';
+import type { TableRow, TableProps } from '../types';
 import { useMediaQuery } from '../utilities/useMediaQuery';
-
-type TableProps = {
-  data: TableRow[];
-  columns: {
-    key: string;
-    label: string;
-  }[];
-  isSelectable?: boolean;
-  isMultiSelect?: boolean;
-};
 
 const Table = ({
   data,

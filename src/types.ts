@@ -1,6 +1,14 @@
 export type TableRow = {
   id: number;
-  name: string;
-  age: number;
-  city: string;
+  [key: string]: string | number;
+};
+
+export type TableProps = {
+  data: TableRow[];
+  columns: {
+    key: string;
+    label: string;
+  }[];
+  isSelectable?: boolean;
+  isMultiSelect?: boolean;
 };
