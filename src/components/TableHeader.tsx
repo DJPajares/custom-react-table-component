@@ -1,4 +1,6 @@
 import React, { useState, CSSProperties } from 'react';
+import ArrowUpIcon from '../icons/ArrowUpIcon';
+import ArrowDownIcon from '../icons/ArrowDownIcon';
 
 type TableHeaderProps = {
   isMobile: boolean;
@@ -27,7 +29,11 @@ const TableHeader = ({ isMobile, columns, onSort }: TableHeaderProps) => {
 
   const getSortIcon = (column: string) => {
     if (sortColumn === column) {
-      return ascending ? '▲' : '▼';
+      return ascending ? (
+        <ArrowUpIcon size={10} />
+      ) : (
+        <ArrowDownIcon size={10} />
+      );
     }
     return null;
   };
