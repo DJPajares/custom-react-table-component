@@ -3,7 +3,6 @@ import { TableRow } from '../types';
 
 type TableBodyProps = {
   row: TableRow;
-  index: number;
   isSelectable?: boolean;
   isMultiSelect?: boolean;
   isSelected?: boolean;
@@ -12,16 +11,15 @@ type TableBodyProps = {
 
 const TableBody = ({
   row,
-  index,
   isSelectable = false,
   isMultiSelect = false,
   isSelected = false,
   handleRowSelect
 }: TableBodyProps) => {
   return (
-    <tr key={index}>
+    <tr>
       <td style={styles.bodyStyle({ isSelected })}>
-        {(isSelectable) && (
+        {isSelectable && (
           <div>
             {isMultiSelect ? (
               <input

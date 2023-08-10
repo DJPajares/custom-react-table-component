@@ -1,8 +1,14 @@
 import React, { CSSProperties } from 'react';
 import Table from './components/Table';
-import type { TableRow } from './types';
 import './fonts/Avenir-Book.ttf';
 import './fonts/Avenir-Heavy.ttf';
+
+type TableRow = {
+  id: number;
+  name: string;
+  age: number;
+  city: string;
+};
 
 const data: TableRow[] = [
   { id: 1, name: 'John Doe', age: 30, city: 'New York' },
@@ -37,12 +43,7 @@ const App = () => {
   return (
     <div style={styles.homeStyle as CSSProperties}>
       <h1>Table Demo</h1>
-      <Table
-        data={data}
-        columns={columns}
-        isSelectable
-        isMultiSelect
-      />
+      <Table data={data} columns={columns} isSelectable isMultiSelect />
     </div>
   );
 };
