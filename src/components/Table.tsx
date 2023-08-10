@@ -34,9 +34,9 @@ const Table = ({
       if (aValue === bValue) return 0;
 
       if (ascending) {
-        return aValue > bValue ? -1 : 1;
-      } else {
         return aValue < bValue ? -1 : 1;
+      } else {
+        return aValue > bValue ? -1 : 1;
       }
     });
 

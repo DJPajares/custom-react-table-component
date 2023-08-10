@@ -17,13 +17,18 @@ const TableHeader = ({ isMobile, columns, onSort }: TableHeaderProps) => {
 
   const handleSort = (column: string) => {
     if (onSort) {
+      let newAscending = ascending;
+
       if (sortColumn === column) {
-        setAscending((prevState) => !prevState);
+        newAscending = !newAscending;
       } else {
-        setSortColumn(column);
-        setAscending(true);
+        newAscending = true;
       }
-      onSort(column, ascending);
+
+      setSortColumn(column);
+      setAscending(newAscending);
+
+      onSort(column, newAscending);
     }
   };
 
