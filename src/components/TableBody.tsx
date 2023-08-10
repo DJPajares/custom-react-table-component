@@ -2,6 +2,7 @@ import React, { CSSProperties } from 'react';
 import { TableRow } from '../types';
 
 type TableBodyProps = {
+  isMobile: boolean;
   row: TableRow;
   isSelectable?: boolean;
   isMultiSelect?: boolean;
@@ -10,6 +11,7 @@ type TableBodyProps = {
 };
 
 const TableBody = ({
+  isMobile,
   row,
   isSelectable = false,
   isMultiSelect = false,
@@ -18,18 +20,20 @@ const TableBody = ({
 }: TableBodyProps) => {
   return (
     <tr>
-      <td style={styles.bodyStyle({ isSelected })}>
+      <td style={styles.bodyStyle({ isSelected, isMobile }) as CSSProperties}>
         {isSelectable && (
           <div>
             {isMultiSelect ? (
               <input
                 type="checkbox"
+                style={styles.checkbox(isMobile) as CSSProperties}
                 checked={isSelected}
                 onChange={handleRowSelect}
               />
             ) : (
               <input
                 type="radio"
+                style={styles.radio(isMobile) as CSSProperties}
                 checked={isSelected}
                 onChange={handleRowSelect}
               />
@@ -41,7 +45,7 @@ const TableBody = ({
       {Object.values(row).map((value, idx) => (
         <td
           key={idx}
-          style={styles.bodyStyle({ isSelected }) as CSSProperties}
+          style={styles.bodyStyle({ isSelected, isMobile }) as CSSProperties}
           onClick={handleRowSelect}
         >
           {value}
@@ -52,16 +56,37 @@ const TableBody = ({
 };
 
 const styles = {
-  bodyStyle: ({ isSelected }: { isSelected: boolean }) => ({
+  bodyStyle: ({
+    isSelected,
+    isMobile
+  }: {
+    isSelected: boolean;
+    isMobile: boolean;
+  }) => ({
     borderTop: '1px solid #E1E1E1',
     padding: '8px 16px',
     fontFamily: 'Avenir-Book',
-    fontSize: 20,
-    fontWeight: 400,
+    fontSize: isMobile ? 14 : 20,
+    fontWeight: 350,
     lineHeight: 1.75,
     letterSpacing: '0.1em',
     backgroundColor: isSelected ? '#EFEDFD' : 'transparent',
     cursor: 'pointer'
+  }),
+  checkbox: (isMobile: boolean) => ({
+    height: isMobile ? 24 : 32,
+    width: isMobile ? 24 : 32,
+    borderRadius: 8,
+    border: '1px solid #A8A8A8'
+    // flexShrink: 0
+  }),
+  radio: (isMobile: boolean) => ({
+    height: isMobile ? 24 : 32,
+    width: isMobile ? 24 : 32
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // flexShrink: 0,
   })
 };
 

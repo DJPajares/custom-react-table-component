@@ -1,6 +1,7 @@
 import React, { useState, CSSProperties } from 'react';
 
 type TableHeaderProps = {
+  isMobile: boolean;
   columns: {
     key: string;
     label: string;
@@ -8,7 +9,7 @@ type TableHeaderProps = {
   onSort?: (column: string, ascending: boolean) => void;
 };
 
-const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
+const TableHeader = ({ isMobile, columns, onSort }: TableHeaderProps) => {
   const [sortColumn, setSortColumn] = useState<string | null>(null);
   const [ascending, setAscending] = useState<boolean>(true);
 
@@ -36,7 +37,7 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
       <tr>
         {columns.map((column) => (
           <th
-            style={styles.headerStyle as CSSProperties}
+            style={styles.headerStyle(isMobile) as CSSProperties}
             key={column.key}
             onClick={() => handleSort(column.key)}
           >
@@ -49,17 +50,17 @@ const TableHeader = ({ columns, onSort }: TableHeaderProps) => {
 };
 
 const styles = {
-  headerStyle: {
-    backgroundColor: '#f0f0f0',
+  headerStyle: (isMobile: boolean) => ({
+    // backgroundColor: '#f0f0f0',
     textAlign: 'left',
     cursor: 'pointer',
     padding: '8px 16px',
     fontFamily: 'Avenir-Heavy',
-    fontSize: 20,
-    fontWeight: 600,
+    fontSize: isMobile ? 14 : 20,
+    fontWeight: 700,
     lineHeight: 1.75,
     letterSpacing: 0
-  }
+  })
 };
 
 export default TableHeader;

@@ -2,6 +2,7 @@ import React, { useState, CSSProperties } from 'react';
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
 import type { TableRow } from '../types';
+import { useMediaQuery } from '../utilities/useMediaQuery';
 
 type TableProps = {
   data: TableRow[];
@@ -22,6 +23,8 @@ const Table = ({
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [sortedData, setSortedData] = useState(data);
   const [selectedRow, setSelectedRow] = useState<string | null>(null);
+
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const handleSort = (column: string, ascending?: boolean) => {
     const sorted = [...data].sort((a: any, b: any) => {
@@ -55,11 +58,12 @@ const Table = ({
 
   return (
     <table style={styles.tableStyle as CSSProperties}>
-      <TableHeader columns={columns} onSort={handleSort} />
+      <TableHeader isMobile={isMobile} columns={columns} onSort={handleSort} />
 
       <tbody>
         {sortedData.map((row) => (
           <TableBody
+            isMobile={isMobile}
             row={row}
             key={row.id?.toString()}
             isSelectable={isSelectable}
