@@ -78,15 +78,11 @@ const styles = {
     width: isMobile ? 24 : 32,
     borderRadius: 8,
     border: '1px solid #A8A8A8'
-    // flexShrink: 0
+    // backgroundColor: '#5C50BB'
   }),
   radio: (isMobile: boolean) => ({
     height: isMobile ? 24 : 32,
     width: isMobile ? 24 : 32
-    // display: 'flex',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // flexShrink: 0,
   })
 };
 
