@@ -46,7 +46,7 @@ const TableBody = ({
         <td
           key={idx}
           style={styles.bodyStyle({ isSelected, isMobile }) as CSSProperties}
-          onClick={handleRowSelect}
+          onClick={isSelectable ? handleRowSelect : () => {}}
         >
           {value}
         </td>
