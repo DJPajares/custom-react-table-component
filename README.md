@@ -1,46 +1,73 @@
-# Getting Started with Create React App
+# Custom React Table Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+This document provides an overview of the Custom React Table Component - a versatile table component developed using ReactJS. This component has been designed to provide a flexible and customizable table display, with key features such as sorting, single-select (radio button), multi-select (checkbox), and responsiveness for both desktop and mobile views. It's important to note that no third-party UI component libraries have been used in the creation of this component.
 
-In the project directory, you can run:
+## Usage
 
-### `yarn start`
+To use the Custom React Table Component, import and integrate it into your React application. Here's an example of how to use it:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+import React from 'react';
+import Table from './path/to/Table';
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+const App = () => {
+  // Define your data and columns
+  const data = [...]; // Your data array
+  const columns = [...]; // Your column configuration
 
-### `yarn test`
+  return (
+    <div>
+      <Table data={data} columns={columns} isSelectable={true} isMultiSelect={true} />
+    </div>
+  );
+};
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+export default App;
+```
 
-### `yarn build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Basic Table Display
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The Custom React Table Component provides a straightforward table display for your data. It accepts data and columns as props and renders the data in a tabular format.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Sorting
 
-### `yarn eject`
+The component supports sorting based on the values in each column. Clicking on a column header triggers sorting in ascending or descending order, as specified by the user. The handleSort function is responsible for handling sorting logic.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Single-Select and Multi-Select
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The component offers both single-select (radio button) and multi-select (checkbox) functionalities. When isSelectable is set to true and isMultiSelect is set to false, single-select mode is enabled. When isMultiSelect is set to true, multi-select mode is enabled, allowing users to select multiple rows.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Responsive Design
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The component is designed to be responsive and adapt to both desktop and mobile views. The layout adjusts based on the screen size using the useMediaQuery hook.
 
-## Learn More
+## API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The Custom React Table Component accepts the following props:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- data (array): The data to be displayed in the table.
+- columns (array): Configuration for the columns.
+- isSelectable (boolean): Enables row selection.
+- isMultiSelect (boolean): Enables multi-select mode.
+
+## Testing
+
+The component contains a unit test for the table component, showing expected behaviors for the provided parameters
+
+## Storybook
+
+The component contains storybook to allow interactions with the component in isoldation.
+
+To run the story book, simply type in the below code:
+
+```bash
+    yarn storybook
+```
+
+## Demo
+
+Insert gif or link to demo
