@@ -1,3 +1,6 @@
-export interface TableRow {
-  [key: string]: string | number | React.ReactNode;
-}
+export type TableRow = {
+  id: number;
+  name: string;
+  age: number;
+  city: string;
+};

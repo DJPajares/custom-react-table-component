@@ -1,14 +1,8 @@
 import React, { CSSProperties } from 'react';
 import Table from './components/Table';
+import type { TableRow } from './types';
 import './fonts/Avenir-Book.ttf';
 import './fonts/Avenir-Heavy.ttf';
-
-type TableRow = {
-  id: number;
-  name: string;
-  age: number;
-  city: string;
-};
 
 const data: TableRow[] = [
   { id: 1, name: 'John Doe', age: 30, city: 'New York' },

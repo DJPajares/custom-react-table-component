@@ -21,9 +21,10 @@ const Table = ({
 }: TableProps) => {
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [sortedData, setSortedData] = useState(data);
+  const [selectedRow, setSelectedRow] = useState<string | null>(null);
 
   const handleSort = (column: string, ascending?: boolean) => {
-    const sorted = [...data].sort((a, b) => {
+    const sorted = [...data].sort((a: any, b: any) => {
       const aValue = a[column] ?? '';
       const bValue = b[column] ?? '';
 
@@ -40,12 +41,16 @@ const Table = ({
   };
 
   const handleRowSelect = (rowId: string) => {
-    setSelectedRows((prevSelectedRows) => {
-      if (prevSelectedRows.includes(rowId)) {
-        return prevSelectedRows.filter((id) => id !== rowId);
-      }
-      return [...prevSelectedRows, rowId];
-    });
+    if (isMultiSelect) {
+      setSelectedRows((prevSelectedRows) => {
+        if (prevSelectedRows.includes(rowId)) {
+          return prevSelectedRows.filter((id) => id !== rowId);
+        }
+        return [...prevSelectedRows, rowId];
+      });
+    } else {
+      setSelectedRow(rowId);
+    }
   };
 
   return (
@@ -60,7 +65,9 @@ const Table = ({
             isSelectable={isSelectable}
             isMultiSelect={isMultiSelect}
             isSelected={
-              row.id ? selectedRows.includes(row.id.toString()) : false
+              isMultiSelect
+                ? selectedRows.includes(row.id.toString())
+                : row.id.toString() === selectedRow
             }
             handleRowSelect={() => row.id && handleRowSelect(row.id.toString())}
           />
