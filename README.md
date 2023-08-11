@@ -73,6 +73,6 @@ To run the story book, simply type in the below code:
 
 ## Demo
 
-| Desktop | Mobile |
-| ------------- | ------------- |
-| <video src="https://github.com/DJPajares/custom-react-table-component/assets/91174577/61b92bb5-7d1b-4d97-ab13-fb4a760439e2" />l  | <video src="https://github.com/DJPajares/custom-react-table-component/assets/91174577/bd63be03-fa4d-41a0-b203-bd495f6ccd6b" />  |
+| Desktop | Mobile 1 | Mobile 2 |
+| ------------- | ------------- | ------------- |
+| <video src="https://github.com/DJPajares/custom-react-table-component/assets/91174577/807c3ff8-991a-405b-a605-c556b68eb895" />l  | <video src="https://github.com/DJPajares/custom-react-table-component/assets/91174577/49f2d1a6-c5f0-47cd-aa71-1601987b360d" /> | <video src="https://github.com/DJPajares/custom-react-table-component/assets/91174577/3aeb4ce8-7828-4841-b234-64858a6eb084" /> |
