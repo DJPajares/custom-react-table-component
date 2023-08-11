@@ -4,6 +4,7 @@ import { TableRow } from '../../../types';
 type TableBodyProps = {
   isMobile: boolean;
   row: TableRow;
+  columns: any[];
   rowIdx: number;
   isSelectable?: boolean;
   isMultiSelect?: boolean;
@@ -14,12 +15,21 @@ type TableBodyProps = {
 const TableBody = ({
   isMobile,
   row,
+  columns,
   rowIdx,
   isSelectable = false,
   isMultiSelect = false,
   isSelected = false,
   handleRowSelect
 }: TableBodyProps) => {
+  // filter data that have the object's key in the columns's key
+  const filteredRow = Object.keys(row)
+    .filter((key) => columns.some((mapping) => mapping.key === key))
+    .reduce((filteredObj: any, key) => {
+      filteredObj[key] = row[key];
+      return filteredObj;
+    }, {});
+
   return (
     <div style={styles.bodyStyle as CSSProperties}>
       <div style={styles.rowStyle as CSSProperties}>
@@ -49,15 +59,13 @@ const TableBody = ({
           </div>
         )}
 
-        {Object.values(row).map((value, idx) => (
+        {Object.values(filteredRow).map((value: any, idx) => (
           <div
             key={idx}
             style={
               styles.cellStyle({
                 isSelected,
                 isMobile,
-                isSelectable,
-                idx,
                 rowIdx
               }) as CSSProperties
             }
@@ -97,14 +105,10 @@ const styles = {
   cellStyle: ({
     isSelected,
     isMobile,
-    isSelectable,
-    idx,
     rowIdx
   }: {
     isSelected: boolean;
     isMobile: boolean;
-    isSelectable: boolean;
-    idx: number;
     rowIdx: number;
   }) => ({
     display: 'table-cell',
@@ -112,7 +116,6 @@ const styles = {
     borderTop: rowIdx === 0 ? '' : '1px solid #E1E1E1',
     paddingTop: 8,
     paddingBottom: 8,
-    // paddingLeft: !isSelectable && idx === 0 ? 0 : 16,
     paddingLeft: 16,
     paddingRight: 16,
     fontFamily: 'Avenir-Book',

@@ -108,6 +108,7 @@ const Table = ({
               key={row.id?.toString()}
               isMobile={isMobile}
               row={row}
+              columns={newColumns}
               rowIdx={rowIdx}
               isSelectable={isSelectable}
               isMultiSelect={isMultiSelect}

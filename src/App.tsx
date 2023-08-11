@@ -13,7 +13,7 @@ const columns: TableColumn[] = jsonColumns;
 const App = () => {
   return (
     <div style={styles.homeStyle as CSSProperties}>
-      <Table data={data} columns={columns} isSelectable />
+      <Table data={data} columns={columns} isSelectable isMultiSelect />
     </div>
   );
 };
