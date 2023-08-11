@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Table from '../../components/Table';
+import Table from '../../components/table/Table';
 
 jest.mock('../../utilities/useMediaQuery', () => ({
   __esModule: true,

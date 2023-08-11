@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import Table from './components/Table';
+import Table from './components/table/Table';
 import type { TableRow } from './types';
 import './fonts/Avenir-Book.ttf';
 import './fonts/Avenir-Heavy.ttf';
@@ -11,10 +11,6 @@ const data: TableRow[] = [
 ];
 
 const columns = [
-  {
-    key: 'checkbox',
-    label: ''
-  },
   {
     key: 'id',
     label: 'ID'
@@ -37,7 +33,7 @@ const App = () => {
   return (
     <div style={styles.homeStyle as CSSProperties}>
       <h1>Table Demo</h1>
-      <Table data={data} columns={columns} isSelectable isMultiSelect />
+      <Table data={data} columns={columns} isSelectable={true} isMultiSelect={true} />
     </div>
   );
 };

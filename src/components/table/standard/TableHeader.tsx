@@ -1,6 +1,6 @@
 import React, { useState, CSSProperties } from 'react';
-import ArrowUpIcon from '../icons/ArrowUpIcon';
-import ArrowDownIcon from '../icons/ArrowDownIcon';
+import ArrowUpIcon from '../../../icons/ArrowUpIcon';
+import ArrowDownIcon from '../../../icons/ArrowDownIcon';
 
 type TableHeaderProps = {
   isMobile: boolean;
@@ -44,33 +44,45 @@ const TableHeader = ({ isMobile, columns, onSort }: TableHeaderProps) => {
   };
 
   return (
-    <thead>
-      <tr>
-        {columns.map((column) => (
-          <th
-            style={styles.headerStyle(isMobile) as CSSProperties}
+    <div style={ styles.headerStyle as CSSProperties }>
+      <div style={styles.headerRowStyle as CSSProperties}>
+        {columns.map((column, idx) => (
+          <div
+            style={styles.cellStyle({isMobile, idx}) as CSSProperties}
             key={column.key}
             onClick={() => handleSort(column.key)}
           >
             {column.label} {getSortIcon(column.key)}
-          </th>
+          </div>
         ))}
-      </tr>
-    </thead>
+      </div>
+    </div>
   );
 };
 
 const styles = {
-  headerStyle: (isMobile: boolean) => ({
-    // backgroundColor: '#f0f0f0',
-    textAlign: 'left',
+  headerStyle: {
+    display: 'table-header-group',
+    margin: -16,
+  },
+  headerRowStyle: {
+    display: 'table-row',
+    margin: -16,
+  },
+  cellStyle: ({ isMobile, idx } : { isMobile: boolean, idx: number }) => ({
+    display: 'table-cell',
+    backgroundColor: '#f0f0f0',
+    textAlign: 'justify',
     cursor: 'pointer',
-    padding: '8px 16px',
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: idx === 0 ? 0 : 16,
+    paddingRight: 16,
     fontFamily: 'Avenir-Heavy',
     fontSize: isMobile ? 14 : 20,
     fontWeight: 700,
     lineHeight: 1.75,
-    letterSpacing: 0
+    letterSpacing: 0,
   })
 };
 
