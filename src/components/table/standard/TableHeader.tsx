@@ -62,21 +62,20 @@ const TableHeader = ({ isMobile, columns, onSort }: TableHeaderProps) => {
 
 const styles = {
   headerStyle: {
-    display: 'table-header-group',
-    margin: -16
+    display: 'table-header-group'
   },
   headerRowStyle: {
-    display: 'table-row',
-    margin: -16
+    display: 'table-row'
   },
   cellStyle: ({ isMobile, idx }: { isMobile: boolean; idx: number }) => ({
     display: 'table-cell',
-    backgroundColor: '#f0f0f0',
+    // backgroundColor: '#f0f0f0',
     textAlign: 'justify',
     cursor: 'pointer',
     paddingTop: 8,
     paddingBottom: 8,
-    paddingLeft: idx === 0 ? 0 : 16,
+    // paddingLeft: idx === 0 ? 0 : 16,
+    paddingLeft: 16,
     paddingRight: 16,
     fontFamily: 'Avenir-Heavy',
     fontSize: isMobile ? 14 : 20,

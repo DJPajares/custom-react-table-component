@@ -16,10 +16,6 @@ const sampleData: TableRow[] = [
 
 const sampleColumn = [
   {
-    key: 'checkbox',
-    label: ''
-  },
-  {
     key: 'id',
     label: 'ID'
   },

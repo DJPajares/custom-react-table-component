@@ -5,7 +5,6 @@ type TableHeaderProps = {
 };
 
 const TableHeader = ({ isSelectable }: TableHeaderProps) => {
-  console.log('isSelectable', isSelectable);
   return (
     <div style={styles.headerStyle as CSSProperties}>
       <div style={styles.headerRowStyle as CSSProperties}>
@@ -34,11 +33,12 @@ const styles = {
   },
   cellStyle: ({ isSelectable }: { isSelectable: boolean }) => ({
     display: 'table-cell',
-    backgroundColor: '#f0f0f0',
+    // backgroundColor: '#f0f0f0',
     cursor: 'pointer',
     paddingTop: 8,
     paddingBottom: 8,
-    paddingLeft: isSelectable ? 16 : 0,
+    // paddingLeft: isSelectable ? 16 : 0,
+    paddingLeft: 16,
     paddingRight: 16,
     fontFamily: 'Avenir-Heavy',
     fontWeight: 700,

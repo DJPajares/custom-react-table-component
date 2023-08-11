@@ -134,8 +134,8 @@ const styles = {
   },
   tableStyle: {
     display: 'table',
-    paddingLeft: 16,
-    paddingRight: 16,
+    // paddingLeft: 16,
+    // paddingRight: 16,
     userSelect: 'none'
   }
 };

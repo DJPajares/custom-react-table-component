@@ -114,6 +114,7 @@ const styles = {
     verticalAlign: 'middle',
     paddingTop: 8,
     paddingBottom: 8,
+    paddingLeft: 16,
     borderTop: rowIdx === 0 ? '' : '1px solid #E1E1E1',
     backgroundColor: isSelected ? '#EFEDFD' : 'transparent',
     cursor: 'pointer'
@@ -138,7 +139,8 @@ const styles = {
     borderTop: rowIdx === 0 ? '' : '1px solid #E1E1E1',
     paddingTop: 8,
     paddingBottom: 8,
-    paddingLeft: !isSelectable && idx === 0 ? 0 : 16,
+    // paddingLeft: !isSelectable && idx === 0 ? 0 : 16,
+    paddingLeft: 16,
     paddingRight: 16,
     fontFamily: 'Avenir-Book',
     fontSize: isMobile ? 14 : 20,

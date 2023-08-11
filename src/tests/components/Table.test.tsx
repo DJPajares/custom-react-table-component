@@ -11,10 +11,6 @@ jest.mock('../../utilities/useMediaQuery', () => ({
 describe('Table Component', () => {
   const sampleColumns = [
     {
-      key: 'checkbox',
-      label: ''
-    },
-    {
       key: 'id',
       label: 'ID'
     },
