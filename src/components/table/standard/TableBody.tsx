@@ -21,10 +21,14 @@ const TableBody = ({
   handleRowSelect
 }: TableBodyProps) => {
   return (
-    <div style={ styles.bodyStyle as CSSProperties }>
-      <div style={ styles.rowStyle as CSSProperties }>
+    <div style={styles.bodyStyle as CSSProperties}>
+      <div style={styles.rowStyle as CSSProperties}>
         {isSelectable && (
-          <div style={styles.checkCellStyle({isSelected, rowIdx}) as CSSProperties}>
+          <div
+            style={
+              styles.checkCellStyle({ isSelected, rowIdx }) as CSSProperties
+            }
+          >
             <div>
               {isMultiSelect ? (
                 <input
@@ -48,7 +52,15 @@ const TableBody = ({
         {Object.values(row).map((value, idx) => (
           <div
             key={idx}
-            style={styles.cellStyle({ isSelected, isMobile, isSelectable, idx, rowIdx }) as CSSProperties}
+            style={
+              styles.cellStyle({
+                isSelected,
+                isMobile,
+                isSelectable,
+                idx,
+                rowIdx
+              }) as CSSProperties
+            }
             onClick={isSelectable ? handleRowSelect : () => {}}
           >
             {value}
@@ -61,19 +73,25 @@ const TableBody = ({
 
 const styles = {
   bodyStyle: {
-    display: 'table-row-group',
+    display: 'table-row-group'
   },
   rowStyle: {
-    display: 'table-row',
+    display: 'table-row'
   },
-  checkCellStyle: ({ isSelected, rowIdx }: { isSelected: boolean, rowIdx: number }) => ({
+  checkCellStyle: ({
+    isSelected,
+    rowIdx
+  }: {
+    isSelected: boolean;
+    rowIdx: number;
+  }) => ({
     display: 'table-cell',
     verticalAlign: 'middle',
     paddingTop: 8,
     paddingBottom: 8,
     borderTop: rowIdx === 0 ? '' : '1px solid #E1E1E1',
     backgroundColor: isSelected ? '#EFEDFD' : 'transparent',
-    cursor: 'pointer',
+    cursor: 'pointer'
   }),
   cellStyle: ({
     isSelected,

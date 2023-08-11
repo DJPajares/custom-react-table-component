@@ -4,7 +4,7 @@ import { TableRow } from '../../../types';
 type TableBodyProps = {
   isMobile: boolean;
   row: TableRow;
-  columns: any[],
+  columns: any[];
   rowIdx: number;
   isSelectable?: boolean;
   isMultiSelect?: boolean;
@@ -23,10 +23,14 @@ const TableBody = ({
   handleRowSelect
 }: TableBodyProps) => {
   return (
-    <div style={ styles.bodyStyle as CSSProperties }>
-      <div style={ styles.rowStyle as CSSProperties }>
+    <div style={styles.bodyStyle as CSSProperties}>
+      <div style={styles.rowStyle as CSSProperties}>
         {isSelectable && (
-          <div style={styles.checkCellStyle({isSelected, rowIdx}) as CSSProperties}>
+          <div
+            style={
+              styles.checkCellStyle({ isSelected, rowIdx }) as CSSProperties
+            }
+          >
             <div>
               {isMultiSelect ? (
                 <input
@@ -47,24 +51,42 @@ const TableBody = ({
           </div>
         )}
 
-        <div style={styles.cellStyle({ title: true, isSelected, isMobile, isSelectable, idx: 0, rowIdx }) as CSSProperties}>
+        <div
+          style={
+            styles.cellStyle({
+              title: true,
+              isSelected,
+              isMobile,
+              isSelectable,
+              idx: 0,
+              rowIdx
+            }) as CSSProperties
+          }
+        >
           {Object.keys(row).map((key) => {
-            const mappingItem = columns.find(column => column.key === key);
+            const mappingItem = columns.find((column) => column.key === key);
 
             return (
-              <div 
-                onClick={ isSelectable ? handleRowSelect : () => { } }
-              >{ mappingItem ? mappingItem.label : key }</div>
-            )
-          }) }
+              <div onClick={isSelectable ? handleRowSelect : () => {}}>
+                {mappingItem ? mappingItem.label : key}
+              </div>
+            );
+          })}
         </div>
-        
-        <div style={styles.cellStyle({ isSelected, isMobile, isSelectable, idx: 1, rowIdx }) as CSSProperties}>
+
+        <div
+          style={
+            styles.cellStyle({
+              isSelected,
+              isMobile,
+              isSelectable,
+              idx: 1,
+              rowIdx
+            }) as CSSProperties
+          }
+        >
           {Object.values(row).map((value, idx) => (
-            <div
-              key={idx}
-              onClick={isSelectable ? handleRowSelect : () => {}}
-            >
+            <div key={idx} onClick={isSelectable ? handleRowSelect : () => {}}>
               {value}
             </div>
           ))}
@@ -76,19 +98,25 @@ const TableBody = ({
 
 const styles = {
   bodyStyle: {
-    display: 'table-row-group',
+    display: 'table-row-group'
   },
   rowStyle: {
-    display: 'table-row',
+    display: 'table-row'
   },
-  checkCellStyle: ({ isSelected, rowIdx }: { isSelected: boolean, rowIdx: number }) => ({
+  checkCellStyle: ({
+    isSelected,
+    rowIdx
+  }: {
+    isSelected: boolean;
+    rowIdx: number;
+  }) => ({
     display: 'table-cell',
     verticalAlign: 'middle',
     paddingTop: 8,
     paddingBottom: 8,
     borderTop: rowIdx === 0 ? '' : '1px solid #E1E1E1',
     backgroundColor: isSelected ? '#EFEDFD' : 'transparent',
-    cursor: 'pointer',
+    cursor: 'pointer'
   }),
   cellStyle: ({
     title = false,
@@ -98,7 +126,7 @@ const styles = {
     idx,
     rowIdx
   }: {
-    title?: boolean,
+    title?: boolean;
     isSelected: boolean;
     isMobile: boolean;
     isSelectable: boolean;
@@ -107,7 +135,6 @@ const styles = {
   }) => ({
     display: 'table-cell',
     verticalAlign: 'middle',
-    // borderTop: rowIdx === 0 ? '' : '1px solid #E1E1E1',
     borderTop: rowIdx === 0 ? '' : '1px solid #E1E1E1',
     paddingTop: 8,
     paddingBottom: 8,
@@ -115,7 +142,7 @@ const styles = {
     paddingRight: 16,
     fontFamily: 'Avenir-Book',
     fontSize: isMobile ? 14 : 20,
-    fontWeight: title ? 700: 350,
+    fontWeight: title ? 700 : 350,
     lineHeight: 1.75,
     letterSpacing: '0.1em',
     backgroundColor: isSelected ? '#EFEDFD' : 'transparent',

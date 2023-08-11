@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Table from '../components/Table'; // Update the import path as needed
+import Table from '../components/table/Table'; // Update the import path as needed
 import type { TableRow, TableProps } from '../types';
 
 export default {

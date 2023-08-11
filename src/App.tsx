@@ -33,7 +33,12 @@ const App = () => {
   return (
     <div style={styles.homeStyle as CSSProperties}>
       <h1>Table Demo</h1>
-      <Table data={data} columns={columns} isSelectable={true} isMultiSelect={true} />
+      <Table
+        data={data}
+        columns={columns}
+        isSelectable={true}
+        isMultiSelect={false}
+      />
     </div>
   );
 };

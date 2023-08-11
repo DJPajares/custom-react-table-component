@@ -44,11 +44,11 @@ const TableHeader = ({ isMobile, columns, onSort }: TableHeaderProps) => {
   };
 
   return (
-    <div style={ styles.headerStyle as CSSProperties }>
+    <div style={styles.headerStyle as CSSProperties}>
       <div style={styles.headerRowStyle as CSSProperties}>
         {columns.map((column, idx) => (
           <div
-            style={styles.cellStyle({isMobile, idx}) as CSSProperties}
+            style={styles.cellStyle({ isMobile, idx }) as CSSProperties}
             key={column.key}
             onClick={() => handleSort(column.key)}
           >
@@ -63,13 +63,13 @@ const TableHeader = ({ isMobile, columns, onSort }: TableHeaderProps) => {
 const styles = {
   headerStyle: {
     display: 'table-header-group',
-    margin: -16,
+    margin: -16
   },
   headerRowStyle: {
     display: 'table-row',
-    margin: -16,
+    margin: -16
   },
-  cellStyle: ({ isMobile, idx } : { isMobile: boolean, idx: number }) => ({
+  cellStyle: ({ isMobile, idx }: { isMobile: boolean; idx: number }) => ({
     display: 'table-cell',
     backgroundColor: '#f0f0f0',
     textAlign: 'justify',
@@ -82,7 +82,7 @@ const styles = {
     fontSize: isMobile ? 14 : 20,
     fontWeight: 700,
     lineHeight: 1.75,
-    letterSpacing: 0,
+    letterSpacing: 0
   })
 };
 

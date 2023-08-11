@@ -28,14 +28,14 @@ const Table = ({
         label: ''
       });
     }
-  
+
     setNewColumns(updatedColumns);
 
     // Set modified mobile layout
     if (columns.length > 3) {
-      setIsModifiedMobileLayout(true)
+      setIsModifiedMobileLayout(true);
     }
-  }, [columns, isSelectable])
+  }, [columns, isSelectable]);
 
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -72,45 +72,53 @@ const Table = ({
   return (
     <div style={styles.tableWrapperStyle as CSSProperties}>
       {isMobile && isModifiedMobileLayout ? (
-        <div style={ styles.tableStyle as CSSProperties }>
+        <div style={styles.tableStyle as CSSProperties}>
           <ModifiedTableHeader isSelectable={isSelectable} />
 
           {sortedData.map((row, rowIdx) => (
             <ModifiedTableBody
               key={row.id?.toString()}
-              isMobile={ isMobile }
-              row={ row }
+              isMobile={isMobile}
+              row={row}
               columns={columns}
-              rowIdx={ rowIdx }
-              isSelectable={ isSelectable }
-              isMultiSelect={ isMultiSelect }
+              rowIdx={rowIdx}
+              isSelectable={isSelectable}
+              isMultiSelect={isMultiSelect}
               isSelected={
                 isMultiSelect
                   ? selectedRows.includes(row.id.toString())
                   : row.id.toString() === selectedRow
               }
-              handleRowSelect={ () => row.id && handleRowSelect(row.id.toString()) }
+              handleRowSelect={() =>
+                row.id && handleRowSelect(row.id.toString())
+              }
             />
           ))}
         </div>
       ) : (
-        <div style={ styles.tableStyle as CSSProperties }>
-          <TableHeader isMobile={isMobile} columns={newColumns} onSort={handleSort} />
+        <div style={styles.tableStyle as CSSProperties}>
+          <TableHeader
+            isMobile={isMobile}
+            columns={newColumns}
+            onSort={handleSort}
+          />
 
           {sortedData.map((row, rowIdx) => (
             <TableBody
               key={row.id?.toString()}
-              isMobile={ isMobile }
-              row={ row }
-              rowIdx={ rowIdx }
-              isSelectable={ isSelectable }
-              isMultiSelect={ isMultiSelect }
+              isMobile={isMobile}
+              row={row}
+              rowIdx={rowIdx}
+              isSelectable={isSelectable}
+              isMultiSelect={isMultiSelect}
               isSelected={
                 isMultiSelect
                   ? selectedRows.includes(row.id.toString())
                   : row.id.toString() === selectedRow
               }
-              handleRowSelect={ () => row.id && handleRowSelect(row.id.toString()) }
+              handleRowSelect={() =>
+                row.id && handleRowSelect(row.id.toString())
+              }
             />
           ))}
         </div>
@@ -122,7 +130,7 @@ const Table = ({
 const styles = {
   tableWrapperStyle: {
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    borderRadius: 16,
+    borderRadius: 16
   },
   tableStyle: {
     display: 'table',
