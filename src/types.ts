@@ -3,6 +3,11 @@ export type TableRow = {
   [key: string]: string | number;
 };
 
+export type TableColumn = {
+  key: string;
+  label: string;
+};
+
 export type TableProps = {
   data: TableRow[];
   columns: {

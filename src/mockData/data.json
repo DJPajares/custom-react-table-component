@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "age": 30,
+    "city": "New York",
+    "occupation": "Software Engineer",
+    "email": "john@example.com"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "age": 25,
+    "city": "Los Angeles",
+    "occupation": "Graphic Designer",
+    "email": "jane@example.com"
+  },
+  {
+    "id": 3,
+    "name": "Mario Kart",
+    "age": 99,
+    "city": "Marioland",
+    "occupation": "Adventurer",
+    "email": "mario@example.com"
+  },
+  {
+    "id": 4,
+    "name": "Emily Johnson",
+    "age": 28,
+    "city": "Chicago",
+    "occupation": "Marketing Manager",
+    "email": "emily@example.com"
+  },
+  {
+    "id": 5,
+    "name": "Alex Williams",
+    "age": 35,
+    "city": "San Francisco",
+    "occupation": "Data Scientist",
+    "email": "alex@example.com"
+  },
+  {
+    "id": 6,
+    "name": "Sara Thompson",
+    "age": 22,
+    "city": "Miami",
+    "occupation": "Student",
+    "email": "sara@example.com"
+  },
+  {
+    "id": 7,
+    "name": "Daniel Lee",
+    "age": 40,
+    "city": "Seattle",
+    "occupation": "Architect",
+    "email": "daniel@example.com"
+  },
+  {
+    "id": 8,
+    "name": "Olivia Brown",
+    "age": 29,
+    "city": "Boston",
+    "occupation": "Writer",
+    "email": "olivia@example.com"
+  }
+]
