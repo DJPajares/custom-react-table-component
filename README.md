@@ -50,6 +50,7 @@ The component is designed to be responsive and adapt to both desktop and mobile 
 The Custom React Table Component accepts the following props:
 
 - data (array): The data to be displayed in the table.
+  - id: required
 - columns (array): Configuration for the columns.
 - isSelectable (boolean): Enables row selection.
 - isMultiSelect (boolean): Enables multi-select mode.
