@@ -46,15 +46,22 @@ const TableHeader = ({ isMobile, columns, onSort }: TableHeaderProps) => {
   return (
     <div style={styles.headerStyle as CSSProperties}>
       <div style={styles.headerRowStyle as CSSProperties}>
-        {columns.map((column, idx) => (
-          <div
-            style={styles.cellStyle({ isMobile, idx }) as CSSProperties}
-            key={column.key}
-            onClick={() => handleSort(column.key)}
-          >
-            {column.label} {getSortIcon(column.key)}
-          </div>
-        ))}
+        {columns.map((column, idx, arr) => {
+          let lastColumn = false;
+          if (arr.length - 1 === idx) lastColumn = true;
+
+          return (
+            <div
+              style={
+                styles.cellStyle({ isMobile, idx, lastColumn }) as CSSProperties
+              }
+              key={column.key}
+              onClick={() => handleSort(column.key)}
+            >
+              {column.label} {getSortIcon(column.key)}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -67,16 +74,25 @@ const styles = {
   headerRowStyle: {
     display: 'table-row'
   },
-  cellStyle: ({ isMobile, idx }: { isMobile: boolean; idx: number }) => ({
+  cellStyle: ({
+    isMobile,
+    idx,
+    lastColumn
+  }: {
+    isMobile: boolean;
+    idx: number;
+    lastColumn: boolean;
+  }) => ({
     display: 'table-cell',
-    // backgroundColor: '#f0f0f0',
+    backgroundColor: '#f0f0f0',
     textAlign: 'justify',
     cursor: 'pointer',
     paddingTop: 8,
     paddingBottom: 8,
-    // paddingLeft: idx === 0 ? 0 : 16,
     paddingLeft: 16,
     paddingRight: 16,
+    borderTopLeftRadius: idx === 0 ? 16 : 0,
+    borderTopRightRadius: lastColumn ? 16 : 0,
     fontFamily: 'Avenir-Heavy',
     fontSize: isMobile ? 14 : 20,
     fontWeight: 700,

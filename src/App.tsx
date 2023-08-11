@@ -36,8 +36,8 @@ const App = () => {
       <Table
         data={data}
         columns={columns}
-        isSelectable={true}
-        isMultiSelect={false}
+        isSelectable={false}
+        isMultiSelect={true}
       />
     </div>
   );

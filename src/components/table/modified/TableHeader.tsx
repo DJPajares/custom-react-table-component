@@ -10,14 +10,28 @@ const TableHeader = ({ isSelectable }: TableHeaderProps) => {
       <div style={styles.headerRowStyle as CSSProperties}>
         {isSelectable && (
           <div
-            style={styles.cellStyle({ isSelectable: false }) as CSSProperties}
+            style={
+              styles.cellStyle({
+                firstColumn: true
+              }) as CSSProperties
+            }
           ></div>
         )}
-        <div style={styles.cellStyle({ isSelectable }) as CSSProperties}>
+        <div
+          style={
+            styles.cellStyle({
+              firstColumn: !isSelectable
+            }) as CSSProperties
+          }
+        >
           Table demo
         </div>
         <div
-          style={styles.cellStyle({ isSelectable: false }) as CSSProperties}
+          style={
+            styles.cellStyle({
+              lastColumn: true
+            }) as CSSProperties
+          }
         ></div>
       </div>
     </div>
@@ -31,13 +45,20 @@ const styles = {
   headerRowStyle: {
     display: 'table-row'
   },
-  cellStyle: ({ isSelectable }: { isSelectable: boolean }) => ({
+  cellStyle: ({
+    firstColumn,
+    lastColumn
+  }: {
+    firstColumn?: boolean;
+    lastColumn?: boolean;
+  }) => ({
     display: 'table-cell',
-    // backgroundColor: '#f0f0f0',
+    backgroundColor: '#f0f0f0',
     cursor: 'pointer',
     paddingTop: 8,
     paddingBottom: 8,
-    // paddingLeft: isSelectable ? 16 : 0,
+    borderTopLeftRadius: firstColumn ? 16 : 0,
+    borderTopRightRadius: lastColumn ? 16 : 0,
     paddingLeft: 16,
     paddingRight: 16,
     fontFamily: 'Avenir-Heavy',
